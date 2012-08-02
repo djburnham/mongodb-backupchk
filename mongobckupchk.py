@@ -150,7 +150,7 @@ with con:
                 printBackupError("Only %s backup copies in %s for the backup of shard001 in %s taken at %s" % (time[1], bucketToChk, env, time[0]) )
             if (time[2] == 0):
                 printBackupError("Total file size for  backup of shard001 in %s taken at %s is zero" % (env,  time[0]) )
-        if (times[(len(times)-2)][2] - times[(len(times)-1)][2] ) > 4096 : # if the new backup is 1 block smaller 
+        if (times[(len(times)-2)][2] - times[(len(times)-1)][2] ) > 8192 : # if the new backup is 1 block smaller 
             printBackupError("The backup files for shard001 in %s got smaller in S3bucket %s please investigate" % (env, bucketToChk) ) 
 
         cur.execute("SELECT BckTime, COUNT(*), sum(Fsize) FROM BackupFile WHERE SERVER IN ('dbmongo04', 'dbmongo05', 'dbmongo06')\
@@ -164,7 +164,7 @@ with con:
                 printBackupError("Only %s backup copies in %s for the backup of shard002 in %s taken at %s" % (time[1], bucketToChk, env, time[0]) )
             if (time[2] == 0):
                 printBackupError("Total file size for  backup of shard002 in %s taken at %s is zero" % (env,  time[0]) )
-        if (times[(len(times)-2)][2] - times[(len(times)-1)][2] ) > 4096:
+        if (times[(len(times)-2)][2] - times[(len(times)-1)][2] ) > 8192:
             printBackupError("The backup files for shard002 in %s got smaller in S3bucket %s please investigate" % (env, bucketToChk) ) 
 
         cur.execute("SELECT BckTime, COUNT(*), sum(Fsize) FROM BackupFile WHERE SERVER IN ('dbmongo07', 'dbmongo08', 'dbmongo09')\
@@ -178,6 +178,6 @@ with con:
                 printBackupError("Only %s backup copies in %s for the backup of shard003 in %s taken at %s" % (time[1], bucketToChk, env, time[0]) )
             if (time[2] == 0):
                 printBackupError("Total file size for  backup of shard003 in %s taken at %s is zero" % (env,  time[0]) )
-        if (times[(len(times)-2)][2] - times[(len(times)-1)][2] ) > 4096:
+        if (times[(len(times)-2)][2] - times[(len(times)-1)][2] ) > 8192:
             printBackupError("The backup files for shard003 in %s got smaller in S3 bucket %s please investigate" % (env, bucketToChk) )  
 #
